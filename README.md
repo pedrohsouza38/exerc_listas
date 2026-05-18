@@ -62,8 +62,6 @@ Lista []: Utilizada para armazenar múltiplos strings em uma única variável de
 
 len(convidados): Função built-in do Python usada para retornar o número de elementos atualmente na lista. É mais eficiente e direto do que criar um contador separado 1.2.4.
 
-
-
 Exercício 2 — Controle de preços
      Solicite 5 preços e:
      armazene em uma lista;
@@ -112,13 +110,49 @@ Por que usar: Embora usa um if dentro do loop para verificar o maior/menor valor
 
 Usado para garantir que o preço seja exibido com duas casas decimais (ex: 10.50), simulando o formato de moeda brasileiro.
 
-
-
 Exercício 3 — Lista de tarefas
      Crie um programa que:
      permita cadastrar tarefas;
      finalize quando o usuário digitar “fim”;
      exiba todas as tarefas.
+
+#Inicializa uma lista vazia para armazenar as tarefas
+tarefas = []
+
+print("--- Gerenciador de Tarefas ---")
+print("Digite 'fim' a qualquer momento para sair e ver suas tarefas.")
+
+#Estrutura de repetição: Permite que o programa continue pedindo novas tarefas
+while True:
+    tarefa = input("\nDigite a sua tarefa: ")
+    
+    # Estrutura de decisão: Verifica se a palavra de parada foi digitada
+    if tarefa.lower() == "fim":
+        print("\n--- Saindo do programa ---")
+        break  # Encerra o loop e para a repetição
+    else:
+        tarefas.append(tarefa) # Adiciona a tarefa informada à lista
+
+#Exibe a lista completa de tarefas cadastradas
+print("\n=== Suas Tarefas Cadastradas ===")
+for t in tarefas:
+    print(f"- {t}")
+
+Explicação das Estruturas Utilizadas
+
+Estrutura de Repetição while True:
+
+Uso: Cria um laço infinito que continuará rodando continuamente, recebendo entradas do usuário de forma ininterrupta.
+
+Justificativa: Como não sabe quantas tarefas o usuário vai adicionar, não pode fixar um limite (ex: 10 vezes). O laço fica ativo até que uma condição de parada obrigue a sua interrupção.
+
+Estrutura de Decisão if / else:
+
+Uso: Avalia a entrada do usuário. O if testa se a palavra digitada foi "fim" e o else captura as demais frases como sendo tarefas reais.
+
+Justificativa: O programa precisa agir de maneiras diferentes dependendo da intenção do usuário: parar o sistema ou salvar uma tarefa na lista.
+
+Comando break: Utilizado dentro do bloco if para "quebrar" o laço de repetição while e finalizar o programa.
 
 Exercício 4 - Controle de temperaturas
      Solicite temperaturas em graus Celsius até o usuário digitar "sair";
