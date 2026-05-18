@@ -159,6 +159,66 @@ Exercício 4 - Controle de temperaturas
      Converta as temperaturas da lista em graus Celsius para uma nova lista de temperaturas em graus Fahrenheit;
      Calcule e exiba as médias de ambas as temperaturas.
 
+#Listas para armazenar as temperaturas
+temp_celsius = []
+temp_fahrenheit = []
+
+#Estrutura de repetição: Permite a inserção contínua de valores até que o usuário digite "sair"
+while True:
+    entrada = input("Digite a temperatura em graus Celsius (ou 'sair' para encerrar): ").strip().lower()
+    
+    #Estrutura de decisão: Verifica se o comando de saída foi acionado
+    if entrada == 'sair':
+        print("Encerrando a entrada de dados...")
+        break
+    
+    #Estrutura de decisão: Tenta converter o texto para número e ignora valores inválidos
+    try:
+        valor_celsius = float(entrada)
+        temp_celsius.append(valor_celsius)
+        
+        #Converte para Fahrenheit usando a fórmula: F = C * (9/5) + 32
+        valor_fahrenheit = valor_celsius * (9/5) + 32
+        temp_fahrenheit.append(valor_fahrenheit)
+        
+        print(f"{valor_celsius}°C convertido para {valor_fahrenheit}°F.")
+        
+    except ValueError:
+        print("Valor inválido. Digite apenas um número ou 'sair'.")
+
+#Estrutura de decisão: Executa o cálculo e exibição apenas se a lista não estiver vazia
+if len(temp_celsius) > 0:
+    media_celsius = sum(temp_celsius) / len(temp_celsius)
+    media_fahrenheit = sum(temp_fahrenheit) / len(temp_fahrenheit)
+    
+    print("\n--- Resultados Finais ---")
+    print(f"Temperaturas em Celsius: {temp_celsius}")
+    print(f"Média das temperaturas em Celsius: {media_celsius:.2f}°C")
+    print(f"Temperaturas em Fahrenheit: {temp_fahrenheit}")
+    print(f"Média das temperaturas em Fahrenheit: {media_fahrenheit:.2f}°F")
+else:
+    print("Nenhuma temperatura foi inserida no programa.")
+
+Explicação e Justificativa das Estruturas Utilizadas
+
+Para atender aos requisitos exigidos, o código faz uso combinado de estruturas de controle de fluxo e repetição:
+
+1. Estrutura de Repetição (while True)
+
+Uso: É utilizada no início do programa para manter o sistema rodando continuamente.
+   
+Justificativa: Como não sabe de antemão quantas temperaturas o usuário vai querer registrar, o loop while garante que o bloco de comandos seja repetido até que uma condição de parada específica aconteça. O True cria um laço infinito que só é interrompido intencionalmente.
+
+2. Estrutura de Decisão (if / elif e break)
+
+Uso: Presente dentro da repetição, testa a variável entrada.
+
+Justificativa: Responsável por checar se o usuário digitou "sair". Se a condição for verdadeira, o comando break é ativado, forçando o programa a sair imediatamente da estrutura de repetição while e seguindo para o cálculo das médias.
+
+Segundo uso (try / except ValueError): Funciona como um mecanismo de validação e controle de erro. Garante que o programa não quebre (feche abruptamente) caso o usuário digite uma letra ou símbolo em vez de um número válido.
+
+Terceiro uso (if len(temp_celsius) > 0): Antes de calcular e exibir as médias, checa se a lista de temperaturas recebeu algum dado. Isso evita o erro de divisão por zero na matemática do script caso o usuário digite "sair" logo na primeira execução.
+
 Exercício 5: Lista de compras
      Exibir um menu de opções para esta lista de compras: 
 
