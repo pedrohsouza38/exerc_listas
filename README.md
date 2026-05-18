@@ -126,7 +126,7 @@ print("Digite 'fim' a qualquer momento para sair e ver suas tarefas.")
 while True:
     tarefa = input("\nDigite a sua tarefa: ")
     
-    # Estrutura de decisão: Verifica se a palavra de parada foi digitada
+    #Estrutura de decisão: Verifica se a palavra de parada foi digitada
     if tarefa.lower() == "fim":
         print("\n--- Saindo do programa ---")
         break  # Encerra o loop e para a repetição
