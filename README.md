@@ -237,3 +237,98 @@ Exercício 5: Lista de compras
      para a opção 6 sair do programa e exibir na tela "Programa encerrado com sucesso!".
 
 Todos os produtos deverão ser cadastrados, pesquisados, removidos e alterados em letras minúsculas.
+
+#Inicializa a lista vazia que irá armazenar os produtos
+lista_compras = []
+
+#Estrutura de repetição que mantém o menu ativo até o usuário escolher sair
+while True:
+    #Exibe o menu de opções
+    print("\n--- MENU ---")
+    print("1 - Adicionar a lista")
+    print("2 - Pesquisar item")
+    print("3 - Remover item")
+    print("4 - Alterar item")
+    print("5 - Listar produtos")
+    print("6 - Sair")
+    
+    #Solicita a escolha do usuário
+    opcao = input("\nEscolha uma opção (1-6): ")
+    
+    #OPÇÃO 1: Adicionar produtos
+    if opcao == '1':
+        print("\n--- ADICIONAR PRODUTOS ---")
+        print("Digite os produtos. Digite 'sair' para voltar ao menu.")
+        while True:
+            item = input("Produto: ").lower() #Transforma a entrada em letras minúsculas
+            if item == 'sair':
+                break
+            lista_compras.append(item) #Adiciona o item na lista
+            print(f"'{item}' adicionado!")
+            
+    #OPÇÃO 2: Pesquisar item
+    elif opcao == '2':
+        print("\n--- PESQUISAR ITEM ---")
+        item_pesquisa = input("Digite o produto que deseja buscar: ").lower()
+        if item_pesquisa in lista_compras:
+            print("Produto encontrado na lista!")
+        else:
+            print("Produto não encontrado.")
+            
+    #OPÇÃO 3: Remover item
+    elif opcao == '3':
+        print("\n--- REMOVER ITEM ---")
+        item_remocao = input("Digite o produto que deseja remover: ").lower()
+        if item_remocao in lista_compras:
+            lista_compras.remove(item_remocao) #Remove o item da lista
+            print("Produto encontrado e removido com sucesso!")
+        else:
+            print("Produto não encontrado.")
+            
+    #OPÇÃO 4: Alterar item
+    elif opcao == '4':
+        print("\n--- ALTERAR ITEM ---")
+        item_antigo = input("Digite o nome do produto que deseja alterar: ").lower()
+        if item_antigo in lista_compras:
+            item_novo = input("Digite o NOVO nome do produto: ").lower()
+            #Encontra a posição do item antigo e substitui pelo novo
+            posicao = lista_compras.index(item_antigo)
+            lista_compras[posicao] = item_novo
+            print("Produto alterado com sucesso!")
+        else:
+            print("Produto não encontrado.")
+            
+    #OPÇÃO 5: Listar produtos
+    elif opcao == '5':
+        print("\n--- LISTA DE COMPRAS ---")
+        if len(lista_compras) == 0:
+            print("Lista vazia")
+        else:
+            #Exibe cada produto da lista
+            for produto in lista_compras:
+                print(f"- {produto}")
+                
+    #OPÇÃO 6: Sair do programa
+    elif opcao == '6':
+        print("\nPrograma encerrado com sucesso!")
+        break #Encerra o loop principal
+        
+    #Tratamento para opções inválidas
+    else:
+        print("\nOpção inválida! Por favor, escolha um número de 1 a 6.")
+
+Explicação das Estruturas Utilizadas
+
+1. Estruturas de Repetição (while e for)
+
+while True: Usado no menu principal para garantir que o programa continue rodando infinitamente, permitindo que o usuário realize várias ações seguidas. O programa só para quando o break for acionado na opção 6.
+
+while True: (na opção 1): Usado para permitir que o usuário digite vários produtos em sequência. O programa entra em um laço infinito que só é interrompido pelo break quando o usuário digita a palavra "sair".
+
+for produto in lista_compras: (na opção 5): Usado para percorrer (iterar) toda a lista de compras, item por item, exibindo cada um deles na tela de forma organizada.
+
+2. Estruturas de Decisão (if, elif, else)
+
+if / elif: Foram usadas para criar as ramificações do menu. O programa avalia a variável opcao escolhida pelo usuário e direciona o fluxo do código para o bloco de comandos exato correspondente (adicionar, pesquisar, remover, etc.)
+
+.if / else aninhados (dentro das opções): Usados para verificar os resultados das ações. Por exemplo, em if item_pesquisa in lista_compras:, o programa toma uma decisão baseada na existência ou não daquele item, exibindo mensagens diferentes para sucesso ou erro.
