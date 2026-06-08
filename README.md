@@ -1,5 +1,5 @@
 # exerc_listas
-Exercícios de Lógica com Python
+Exercícios de Lógica com Python usando Listas
 
 Exercício 1 — Lista de convidados
 Crie um programa que:
